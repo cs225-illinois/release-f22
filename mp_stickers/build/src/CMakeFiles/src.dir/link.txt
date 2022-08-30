@@ -1,0 +1,2 @@
+/usr/bin/ar qc libsrc.a CMakeFiles/src.dir/Image.cpp.o CMakeFiles/src.dir/StickerSheet.cpp.o
+/usr/bin/ranlib libsrc.a
