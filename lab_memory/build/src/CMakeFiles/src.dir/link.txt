@@ -1,0 +1,2 @@
+/usr/bin/ar qc libsrc.a CMakeFiles/src.dir/allocator.cpp.o CMakeFiles/src.dir/fileio.cpp.o CMakeFiles/src.dir/letter.cpp.o CMakeFiles/src.dir/room.cpp.o
+/usr/bin/ranlib libsrc.a
