@@ -78,6 +78,30 @@ TEST_CASE("List::triplerotate simple", "[weight=10][part=1][valgrind]") {
 
     REQUIRE("< 2 3 1 5 6 4 >" == s.str());
 }
+TEST_CASE("List::reverseNth") {
+    List<int> list;
+
+    list.insertBack(1);
+    list.insertBack(2);
+    list.insertBack(3);
+    list.insertBack(4);
+    list.reverseNth(4);
+    stringstream s;
+    list.print(s);
+    REQUIRE("< 4 3 2 1 >" == s.str());
+    List<int> list1;
+
+    list1.insertBack(1);
+    list1.insertBack(2);
+    list1.insertBack(3);
+    list1.insertBack(4);
+    list1.reverseNth(2);
+    stringstream s1;
+    list1.print(s1);
+    REQUIRE("< 2 1 4 3 >" == s1.str());
+
+
+}
 
 TEST_CASE("List::split simple", "[weight=5][part=1][valgrind]") {
     List<int> list;

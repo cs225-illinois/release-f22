@@ -8,6 +8,7 @@ List<T>::List() {
   // @TODO: graded in MP3.1
     head_ = NULL;
     tail_ = NULL;
+    length_ = 0;
 }
 
 /**
@@ -17,7 +18,7 @@ List<T>::List() {
 template <typename T>
 typename List<T>::ListIterator List<T>::begin() const {
   // @TODO: graded in MP3.1
-  return List<T>::ListIterator(NULL);
+  return List<T>::ListIterator(head_);
 }
 
 /**
@@ -36,7 +37,19 @@ typename List<T>::ListIterator List<T>::end() const {
  */
 template <typename T>
 void List<T>::_destroy() {
-  /// @todo Graded in MP3.1
+  ListNode* listWalker;
+  ListNode* temp;
+  listWalker = head_;
+
+  while (listWalker != NULL) {
+    temp = listWalker;
+    listWalker = listWalker->next;
+    delete temp;
+  }
+  head_ = tail_ = temp = NULL;
+  length_ = 0;
+
+
 }
 
 /**
@@ -47,18 +60,17 @@ void List<T>::_destroy() {
  */
 template <typename T>
 void List<T>::insertFront(T const & ndata) {
-  /// @todo Graded in MP3.1
+   /// @todo Graded in MP3.1
   ListNode * newNode = new ListNode(ndata);
-  newNode -> next = head_;
-  newNode -> prev = NULL;
-  
-  if (head_ != NULL) {
-    head_ -> prev = newNode;
-  }
-  if (tail_ == NULL) {
+  if (head_ == NULL){
+    head_ = newNode;
     tail_ = newNode;
+  } else {
+    newNode -> next = head_;
+    head_->prev = newNode;
+    head_ = head_->prev;
   }
-  
+
 
   length_++;
 
@@ -73,6 +85,19 @@ void List<T>::insertFront(T const & ndata) {
 template <typename T>
 void List<T>::insertBack(const T & ndata) {
   /// @todo Graded in MP3.1
+  ListNode* newNode = new ListNode(ndata);
+  if (length_ == 0) {
+    head_ = newNode;
+    tail_ = newNode;
+    length_++;
+  }
+  else {
+    tail_->next = newNode;
+    newNode->prev = tail_;
+    tail_ = tail_->next;
+    length_++;
+
+  }
 }
 
 /**
@@ -94,18 +119,16 @@ void List<T>::insertBack(const T & ndata) {
 template <typename T>
 typename List<T>::ListNode * List<T>::split(ListNode * start, int splitPoint) {
   /// @todo Graded in MP3.1
-  ListNode * curr = start;
-
-  for (int i = 0; i < splitPoint || curr != NULL; i++) {
-    curr = curr->next;
+  if (splitPoint == 0 ) {return start;}
+  ListNode* walker = start;
+  ListNode* temp;
+  for (int i = 0; i < splitPoint; i++) {
+    temp = walker;
+    walker = walker->next;
   }
+  temp->next = NULL;
 
-  if (curr != NULL) {
-      curr->prev->next = NULL;
-      curr->prev = NULL;
-  }
-
-  return NULL;
+  return walker;
 }
 
 /**
@@ -121,6 +144,33 @@ typename List<T>::ListNode * List<T>::split(ListNode * start, int splitPoint) {
 template <typename T>
 void List<T>::tripleRotate() {
   // @todo Graded in MP3.1
+  if (length_ < 3) {return;}
+  ListNode* listWalker = head_;
+  for (int i = 0; (i+2) < length_; i+=2) {
+    ListNode* start = listWalker;
+    ListNode* mid = listWalker->next;
+    ListNode* end = listWalker->next->next;
+    ListNode* anchor_l =(start == head_) ? NULL : start->prev;
+    ListNode* anchor_r = (end == tail_) ? NULL :  end->next;
+    if (anchor_l != NULL) {
+      anchor_l->next = mid;
+      mid->prev = anchor_l;
+    } else {
+      mid->prev = NULL;
+      head_ = mid;
+    }
+    end->next = start;
+    start->prev = end;
+
+    if (anchor_r != NULL) {
+      start->next = anchor_r;
+      anchor_r->prev = start;
+    } else {
+      start->next = NULL;
+      tail_ = start;
+    }
+    listWalker = listWalker->next;
+  }
 }
 
 
@@ -145,7 +195,47 @@ void List<T>::reverse() {
  */
 template <typename T>
 void List<T>::reverse(ListNode *& startPoint, ListNode *& endPoint) {
-  /// @todo Graded in MP3.2
+  if (startPoint == endPoint) return;
+  //Last node on either side not cut
+  ListNode* anchor_l = startPoint->prev;
+  ListNode* anchor_r = endPoint->next;
+  //List walker for reading backwards
+  ListNode* listWalker = startPoint;
+  ListNode* temp = NULL;
+  //references to start and end point, used to switch their positions
+  //at end of function.
+  ListNode* startRef = startPoint;
+  ListNode* endRef = endPoint;
+
+  //Walk through the list backwards
+  while (listWalker != endPoint) {
+    temp = listWalker->prev;
+    listWalker->prev = listWalker->next;
+    listWalker->next = temp;
+    listWalker = listWalker->prev;
+  }
+
+  //Reconnect to the anchor points
+  listWalker->next = listWalker->prev;
+  listWalker->prev = anchor_l;
+  startPoint->next = anchor_r;
+
+  //Clean up any incongruities with head_ and tail_ ptrs.
+  if (anchor_l != NULL) {
+    anchor_l->next = endPoint;
+  } else {
+    head_ = endPoint;
+  }
+
+  if (anchor_r != NULL) {
+    anchor_r->prev = startPoint;
+  
+  } else {
+    tail_ = startPoint;
+  }
+  //Finally reconnect the list using the two references from the begininng.
+  startPoint = endRef;
+  endPoint = startRef;
 }
 
 /**
@@ -157,6 +247,25 @@ void List<T>::reverse(ListNode *& startPoint, ListNode *& endPoint) {
 template <typename T>
 void List<T>::reverseNth(int n) {
   /// @todo Graded in MP3.2
+  if (n == 1) {
+    return;
+  }
+  if (n == length_) {
+    reverse();
+  } else {
+    ListNode* listWalker = head_;
+    for (int i = 0; (i + n) < length_; i+=(n - 1)) {
+      ListNode* temp = listWalker;
+      for (int j = 0; j < n-1; j++) {
+        temp = temp->next;
+      }
+      ListNode* end = temp;
+      reverse(listWalker, end);
+      listWalker = end->next;
+    }
+  }
+
+  
 }
 
 
@@ -198,7 +307,49 @@ void List<T>::mergeWith(List<T> & otherList) {
 template <typename T>
 typename List<T>::ListNode * List<T>::merge(ListNode * first, ListNode* second) {
   /// @todo Graded in MP3.2
-  return NULL;
+  if (first == NULL) {return second;}
+  if (second == NULL) {return first;}
+  if (first && second == NULL) {return NULL;}
+  ListNode* firstWalker, *firstTemp;
+  ListNode* secondWalker, *secondTemp;
+  
+  if (second->data < first->data) {
+    ListNode* secondLower = second;
+    second = first;
+    first = secondLower;
+  }
+  //first will always have the lower head
+  firstWalker = first;
+  secondWalker = second;
+
+  while (secondWalker != NULL) {
+    secondTemp = secondWalker->next;
+
+    while (firstWalker != NULL) {
+      firstTemp = firstWalker->next;
+
+      if (secondWalker->data < firstWalker->data) {
+        secondWalker->next = firstWalker;
+        firstWalker->prev->next = secondWalker;
+        secondWalker->prev = firstWalker->prev;
+        firstWalker->prev = secondWalker;
+        break;
+      } else if (firstWalker == NULL && secondWalker != NULL) {
+        firstWalker->next = secondWalker;
+        secondWalker->prev = firstWalker;
+        break;
+      } else {
+        firstWalker = firstTemp;
+      }
+    }
+    if (firstWalker->next == secondWalker) {break;}
+    secondWalker = secondTemp;
+
+  }
+
+
+
+  return first;
 }
 
 /**
