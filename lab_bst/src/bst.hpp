@@ -7,51 +7,74 @@
 template <class K, class V>
 V BST<K, V>::find(const K& key)
 {
-    // your code here
+  return find(root, key)->value;
 }
-
 template <class K, class V>
 struct BST<K, V>::Node* & BST<K, V>::find(Node* & subtree, const K& key)
 {
-    // Your code here
+    if (subtree == NULL || subtree->key == key) {
+        return subtree;
+    }
+    if (subtree->key < key) {
+        return find(subtree->right, key);
+    }
+    return find(subtree->left, key);
 }
 
 template <class K, class V>
 void BST<K, V>::insert(const K & key, const V & value)
 {
-    // your code here
+    BST<K, V>::insert(root, key, value);
 }
 
 template <class K, class V>
 void BST<K, V>::insert(Node*& subtree, const K& key, const V& value)
 {
-    // your code here
+    BST<K,V>::Node* insertionNode = find(subtree, key);
+    Node* toInsert = new Node(key, value);
+    if (insertionNode->key > key) {
+        insertionNode->left = toInsert;
+    } else {
+        insertionNode->right = toInsert;
+    }
+    
+
 }
 
 template <class K, class V>
 void BST<K, V>::swap(Node*& first, Node*& second)
 {
-    // your code here
+    V temp;
+    temp = first->value;
+    first->value = second->value;
+    second->value = temp;
+    
 }
 
 template <class K, class V>
 void BST<K, V>::remove(const K& key)
 {
-    // your code here
+    BST<K,V>::remove(root, key);
 }
 
 template <class K, class V>
 void BST<K, V>::remove(Node*& subtree, const K& key)
 {
-    // your code here
+    BST<K, V>::Node* toRemove = find(subtree, key);
+    delete toRemove;
 }
 
 template <class K, class V>
 BST<K, V> listBuild(std::vector<std::pair<K, V>> inList){
-    // your code here
+    BST<K,V>* tree= new BST<K, V>();
+    for (size_t i = 0; i < inList.size(); i++) {
+        tree->insert(inList.at(i).first, inList.at(i).second);
+    }
+    return *tree;
 }
 
 template <class K, class V>
 std::vector<int> allBuild(std::vector<std::pair<K, V>> inList){
-    // your code here
+    std::vector<int> mine;
+    return mine;
 }

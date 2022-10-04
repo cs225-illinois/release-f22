@@ -76,9 +76,13 @@ void BinaryTree<T>::printLeftToRight(const Node* subRoot) const
  *  (not creating a flipped copy).
  */
     template <typename T>
-void BinaryTree<T>::mirror()
-{
-    //your code here
+void BinaryTree<T>::mirror() {
+    if(root->left == NULL && root->right == NULL){return;}
+    Node* temp;
+    temp = root->left;
+    root->left = root->right;
+    root->right = temp;
+    return;
 }
 
 
@@ -91,8 +95,20 @@ void BinaryTree<T>::mirror()
 template <typename T>
 bool BinaryTree<T>::isOrderedIterative() const
 {
-    // your code here
-    return false;
+    InorderTraversal<T> traversal(root);
+    bool in_order = true;
+    T place_holder;
+    int index = 0;
+    for (auto it = traversal.begin(); it != traversal.end(); ++it) {
+        if (index != 0) {
+            if ((*it)->elem <= place_holder) {
+                in_order = false;
+            }
+        }
+        place_holder = (*it)->elem;
+        index += 1;
+    }
+    return in_order;
 }
 
 /**
