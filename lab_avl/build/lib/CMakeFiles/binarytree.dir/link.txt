@@ -1,0 +1,2 @@
+/usr/bin/ar qc libbinarytree.a CMakeFiles/binarytree.dir/binarytree/coloredout.cpp.o
+/usr/bin/ranlib libbinarytree.a
