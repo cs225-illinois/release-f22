@@ -24,6 +24,21 @@ using namespace cs225;
  */
 BFS::BFS(const PNG & png, const Point & start, double tolerance) {  
   /** @todo [Part 1] */
+  png_ = png;
+  start_= start;
+  tolerance_ = tolerance;
+  visited_ = new bool*[png_.width()];
+  for (unsigned w = 0; w < png_.width(); w++) {
+    visited_[w] = new bool[png_.height()];
+  }
+  for (unsigned w = 0; w < png_.width(); w++) {
+    for (unsigned h = 0; h < png_.height(); h++) {
+      visited_[w][h] = false;
+    }
+  }
+  point_list_.push_back(start_);
+  visited_[start_.x][start_.y] = true;
+
 }
 
 /**
@@ -31,7 +46,9 @@ BFS::BFS(const PNG & png, const Point & start, double tolerance) {
  */
 ImageTraversal::Iterator BFS::begin() {
   /** @todo [Part 1] */
-  return ImageTraversal::Iterator();
+  ImageTraversal* traversal = new BFS(png_, start_, tolerance_);
+  ImageTraversal::Iterator it(traversal, start_);
+  return it;
 }
 
 /**
@@ -46,6 +63,7 @@ ImageTraversal::Iterator BFS::end() {
  * Adds a Point for the traversal to visit at some point in the future.
  */
 void BFS::add(const Point & point) {
+  point_list_.push_back(point);
   /** @todo [Part 1] */
 }
 
@@ -54,7 +72,9 @@ void BFS::add(const Point & point) {
  */
 Point BFS::pop() {
   /** @todo [Part 1] */
-  return Point(0, 0);
+  Point temp = point_list_.front();
+  point_list_.pop_front();
+  return temp;
 }
 
 /**
@@ -62,7 +82,10 @@ Point BFS::pop() {
  */
 Point BFS::peek() const {
   /** @todo [Part 1] */
-  return Point(0, 0);
+  if (empty()) {
+    return Point(-1,-1);
+  }
+  return point_list_.front();
 }
 
 /**
@@ -70,5 +93,5 @@ Point BFS::peek() const {
  */
 bool BFS::empty() const {
   /** @todo [Part 1] */
-  return true;
+  return point_list_.empty();
 }

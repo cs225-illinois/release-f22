@@ -7,7 +7,7 @@
 #include "cs225/HSLAPixel.h"
 #include "cs225/PNG.h"
 #include "../Point.h"
-
+#include <list>
 using namespace cs225;
 
 /**
@@ -36,10 +36,12 @@ public:
 
     /** @todo [Part 1] */
     /** add member functions if neccesary*/
-
+    Iterator(ImageTraversal* it, Point point);
   private:
     /** @todo [Part 1] */
     /** add private members here if neccesary*/
+    ImageTraversal* it_;
+    Point currentPoint_;
 
   };
 
@@ -75,7 +77,11 @@ public:
    * Virtual function. Derived class need to implement this
    */
   virtual bool empty() const = 0;
-
+  PNG png_;
+  Point start_;
+  double tolerance_;
+  bool** visited_;
+  std::list<Point> point_list_;
 private:
   static double calculateDelta(const HSLAPixel & p1, const HSLAPixel & p2);  
 };

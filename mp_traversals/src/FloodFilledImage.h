@@ -29,6 +29,9 @@ public:
 
 private:
 	/** @todo [Part 2] */
-	/** add private members here*/
+	PNG png_;
+  vector<PNG> frames_;
+  vector<ImageTraversal*> traversals_;
+  vector<ColorPicker*> colors_;
 
 };
