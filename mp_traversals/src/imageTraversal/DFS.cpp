@@ -22,6 +22,7 @@
  * it will not be included in this DFS
  */
 DFS::DFS(const PNG & png, const Point & start, double tolerance) {  
+<<<<<<< HEAD
   png_ = png;
   start_ = start;
   tolerance_ = tolerance;
@@ -36,13 +37,32 @@ DFS::DFS(const PNG & png, const Point & start, double tolerance) {
     }
   }
   //visited_[start_.x][start_.y] = true;
+=======
+  tolerance_ = tolerance;
+  image_ = png;
+  start_ = start;
+  toVisit_.push_back(start_);
+  visited_ = new bool*[image_.width()];
+  for (unsigned w = 0; w < image_.width(); w++){
+    visited_[w] = new bool[image_.height()];
+  }
+  for (unsigned w = 0; w < image_.width(); w++) {
+    for (unsigned h = 0; h < image_.height(); h++) {
+      visited_[w][h] = false;
+    }
+  }
+>>>>>>> 203cf02 (my mcdonalds tasted like fish)
 }
 
 /**
  * Returns an iterator for the traversal starting at the first point.
  */
 ImageTraversal::Iterator DFS::begin() {
+<<<<<<< HEAD
   ImageTraversal* itDFS = new DFS(png_, start_, tolerance_);
+=======
+  ImageTraversal* itDFS = new DFS(image_, start_, tolerance_);
+>>>>>>> 203cf02 (my mcdonalds tasted like fish)
   ImageTraversal::Iterator it(itDFS, start_);
   return it;
 }
@@ -59,18 +79,27 @@ ImageTraversal::Iterator DFS::end() {
  * Adds a Point for the traversal to visit at some point in the future.
  */
 void DFS::add(const Point & point) {
+<<<<<<< HEAD
   point_list_.push_back(point);
+=======
+  toVisit_.push_back(point);
+>>>>>>> 203cf02 (my mcdonalds tasted like fish)
 }
 
 /**
  * Removes and returns the current Point in the traversal.
  */
 Point DFS::pop() {
+<<<<<<< HEAD
   if (point_list_.empty()) {
     return Point(-1,-1);
   }
   Point p = point_list_.back();
   point_list_.pop_back();
+=======
+  Point p = *(toVisit_.end());
+  toVisit_.pop_back();
+>>>>>>> 203cf02 (my mcdonalds tasted like fish)
   return p;
 }
 

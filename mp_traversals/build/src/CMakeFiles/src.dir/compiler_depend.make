@@ -1240,6 +1240,7 @@ src/CMakeFiles/src.dir/colorPicker/MyColorPicker.cpp.o: ../src/colorPicker/MyCol
   /usr/include/c++/11/bits/sstream.tcc \
   ../src/Point.h \
   ../src/colorPicker/ColorPicker.h \
+<<<<<<< HEAD
   ../src/colorPicker/MyColorPicker.h \
   /usr/include/c++/11/cmath \
   /usr/include/math.h \
@@ -1266,6 +1267,9 @@ src/CMakeFiles/src.dir/colorPicker/MyColorPicker.cpp.o: ../src/colorPicker/MyCol
   /usr/include/c++/11/tr1/poly_hermite.tcc \
   /usr/include/c++/11/tr1/poly_laguerre.tcc \
   /usr/include/c++/11/tr1/riemann_zeta.tcc
+=======
+  ../src/colorPicker/MyColorPicker.h
+>>>>>>> 203cf02 (my mcdonalds tasted like fish)
 
 src/CMakeFiles/src.dir/colorPicker/RainbowColorPicker.cpp.o: ../src/colorPicker/RainbowColorPicker.cpp \
   ../lib/cs225/HSLAPixel.h \
@@ -2374,6 +2378,7 @@ src/CMakeFiles/src.dir/imageTraversal/ImageTraversal.cpp.o: ../src/imageTraversa
   /usr/include/c++/11/bits/sstream.tcc \
   ../lib/cs225/PNG.h \
   ../src/Point.h \
+<<<<<<< HEAD
   ../src/imageTraversal/ImageTraversal.h \
   /usr/include/c++/11/list \
   /usr/include/c++/11/bits/stl_list.h \
@@ -2388,6 +2393,9 @@ src/CMakeFiles/src.dir/imageTraversal/ImageTraversal.cpp.o: ../src/imageTraversa
   /usr/include/c++/11/debug/safe_container.h \
   /usr/include/c++/11/debug/safe_iterator.h \
   /usr/include/c++/11/debug/safe_iterator.tcc
+=======
+  ../src/imageTraversal/ImageTraversal.h
+>>>>>>> 203cf02 (my mcdonalds tasted like fish)
 
 
 ../src/imageTraversal/ImageTraversal.cpp:

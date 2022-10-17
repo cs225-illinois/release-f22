@@ -34,5 +34,14 @@ public:
 
 private:
 	/** @todo [Part 1] */
+<<<<<<< HEAD
 
+=======
+  bool** visited_;
+	std::list<Point> toVisit_;
+  double tolerance_;
+  PNG image_;
+  Point start_;
+  
+>>>>>>> 203cf02 (my mcdonalds tasted like fish)
 };

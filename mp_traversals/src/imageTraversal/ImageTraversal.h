@@ -33,6 +33,7 @@ public:
     Iterator & operator++();
     Point operator*();
     bool operator!=(const Iterator &other);
+    Iterator(ImageTraversal* imageTraversal, Point point);
 
     /** @todo [Part 1] */
     /** add member functions if neccesary*/
@@ -40,8 +41,13 @@ public:
   private:
     /** @todo [Part 1] */
     /** add private members here if neccesary*/
+<<<<<<< HEAD
     ImageTraversal* it_;
     Point currentPoint_;
+=======
+    ImageTraversal* traversal_;
+    Point point_;
+>>>>>>> 203cf02 (my mcdonalds tasted like fish)
 
   };
 

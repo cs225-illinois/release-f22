@@ -33,6 +33,7 @@ double ImageTraversal::calculateDelta(const HSLAPixel & p1, const HSLAPixel & p2
  */
 ImageTraversal::Iterator::Iterator() {
   /** @todo [Part 1] */
+<<<<<<< HEAD
   currentPoint_ = Point(-1, -1);
 }
 /*
@@ -41,6 +42,9 @@ ImageTraversal::Iterator::Iterator() {
 ImageTraversal::Iterator::Iterator(ImageTraversal* it, Point point) {
   currentPoint_ = point;
   it_ = it;
+=======
+  
+>>>>>>> 203cf02 (my mcdonalds tasted like fish)
 }
 
 /**

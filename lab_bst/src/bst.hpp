@@ -31,7 +31,7 @@ template <class K, class V>
 void BST<K, V>::insert(Node*& subtree, const K& key, const V& value)
 {
     BST<K,V>::Node* insertionNode = find(subtree, key);
-    Node* toInsert = new Node(key, value);
+    Node* toInsert = new Node();
     if (insertionNode->key > key) {
         insertionNode->left = toInsert;
     } else {

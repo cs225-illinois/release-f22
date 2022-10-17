@@ -1247,6 +1247,7 @@ src/CMakeFiles/src.dir/colorPicker/MyColorPicker.cpp.o
  /workspaces/cs225env/terrypm2/release-f22/mp_traversals/src/Point.h
  /workspaces/cs225env/terrypm2/release-f22/mp_traversals/src/colorPicker/ColorPicker.h
  /workspaces/cs225env/terrypm2/release-f22/mp_traversals/src/colorPicker/MyColorPicker.h
+<<<<<<< HEAD
  /usr/include/c++/11/cmath
  /usr/include/math.h
  /usr/include/x86_64-linux-gnu/bits/math-vector.h
@@ -1272,6 +1273,8 @@ src/CMakeFiles/src.dir/colorPicker/MyColorPicker.cpp.o
  /usr/include/c++/11/tr1/poly_hermite.tcc
  /usr/include/c++/11/tr1/poly_laguerre.tcc
  /usr/include/c++/11/tr1/riemann_zeta.tcc
+=======
+>>>>>>> 203cf02 (my mcdonalds tasted like fish)
 
 src/CMakeFiles/src.dir/colorPicker/RainbowColorPicker.cpp.o
  /workspaces/cs225env/terrypm2/release-f22/mp_traversals/src/colorPicker/RainbowColorPicker.cpp
@@ -2386,6 +2389,7 @@ src/CMakeFiles/src.dir/imageTraversal/ImageTraversal.cpp.o
  /workspaces/cs225env/terrypm2/release-f22/mp_traversals/lib/cs225/PNG.h
  /workspaces/cs225env/terrypm2/release-f22/mp_traversals/src/Point.h
  /workspaces/cs225env/terrypm2/release-f22/mp_traversals/src/imageTraversal/ImageTraversal.h
+<<<<<<< HEAD
  /usr/include/c++/11/list
  /usr/include/c++/11/bits/stl_list.h
  /usr/include/c++/11/bits/allocated_ptr.h
@@ -2399,4 +2403,6 @@ src/CMakeFiles/src.dir/imageTraversal/ImageTraversal.cpp.o
  /usr/include/c++/11/debug/safe_container.h
  /usr/include/c++/11/debug/safe_iterator.h
  /usr/include/c++/11/debug/safe_iterator.tcc
+=======
+>>>>>>> 203cf02 (my mcdonalds tasted like fish)
 
