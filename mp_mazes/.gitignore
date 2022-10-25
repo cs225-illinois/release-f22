@@ -1,0 +1,17 @@
+mazes
+test
+*.o
+*.d
+.obj
+build/
+
+# Generated images
+unsolved.png
+solved.png
+testDrawMazeSmall.png
+testDrawMazeLarge.png
+testDrawSolutionMed.png
+testDrawSolutionLarge.png
+
+testdsets
+testsquaremaze
