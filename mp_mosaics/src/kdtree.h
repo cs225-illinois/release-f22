@@ -45,7 +45,7 @@ class KDTree
     };
 
   public:
-    /**
+   /**
      * Determines if Point a is smaller than Point b in a given dimension d.
      * If there is a tie, break it with Point::operator<().
      *
@@ -261,7 +261,13 @@ class KDTree
     /**
      * @todo Add your helper functions here.
      */
+    void delete_helper(KDTreeNode*& subroot);
+    void copy_helper(KDTreeNode*& subroot, KDTreeNode*& other_subroot);
+    std::vector<Point<Dim>> mergeSortByK(vector<Point<Dim>>& list1, vector<Point<Dim>>& list2, int k);
+    void sortByK(std::vector<Point<Dim>>& input, int k);
+    void constructor_helper(KDTreeNode*& subroot, vector<Point<Dim>>& points, int dimension);
+    void find_nearest_neighbor_helper(KDTreeNode* current, Point<Dim>& current_best, Point<Dim>& query, int k) const;
 };
 
 #include "kdtree.hpp"
-#include "kdtree_extras.hpp"
+#include "kdtree_extras.hpp"  
