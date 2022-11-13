@@ -1,0 +1,2 @@
+/usr/bin/ar qc liblodepng.a CMakeFiles/lodepng.dir/lodepng/lodepng.cpp.o
+/usr/bin/ranlib liblodepng.a
