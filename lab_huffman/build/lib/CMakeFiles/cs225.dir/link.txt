@@ -1,0 +1,2 @@
+/usr/bin/ar qc libcs225.a CMakeFiles/cs225.dir/cs225/HSLAPixel.cpp.o CMakeFiles/cs225.dir/cs225/PNG.cpp.o
+/usr/bin/ranlib libcs225.a

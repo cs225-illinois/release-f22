@@ -141,28 +141,29 @@ std::vector<int> SquareMaze::solveMaze() {
         x = current % width_;
         y = current / width_;
         bfs.pop();
-        if (canTravel(x, y, 0)) { //+1
+
+        if (canTravel(x, y, 0)) { //+1 = right
             if (bfs_path[current + 1] == -1) {
                 bfs.push(current + 1);
                 bfs_path[current + 1] = current;
                 distance[current + 1] = distance[current] + 1;
             }
         }
-        if (canTravel(x, y, 1)) { //+width_
+        if (canTravel(x, y, 1)) { //+width_ = down
             if (bfs_path[current + width_] == -1) {
                 bfs.push(current + width_);
                 bfs_path[current + width_] = current;
                 distance[current + width_] = distance[current] + 1;
             }
         }
-        if (canTravel(x, y, 2)) { // -1
+        if (canTravel(x, y, 2)) { // -1 = left
             if (bfs_path[current - 1] == -1) {
                 bfs.push(current - 1);
                 bfs_path[current - 1] = current;
                 distance[current - 1] = distance[current] + 1;
             }
         }
-        if (canTravel(x, y, 3)) { //- width_
+        if (canTravel(x, y, 3)) { //- width_ = up
             if (bfs_path[current - width_] == -1) {
                 bfs.push(current - width_);
                 bfs_path[current - width_] = current;

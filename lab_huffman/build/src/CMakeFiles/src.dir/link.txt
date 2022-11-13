@@ -1,0 +1,2 @@
+/usr/bin/ar qc libsrc.a CMakeFiles/src.dir/binary_file_reader.cpp.o CMakeFiles/src.dir/binary_file_writer.cpp.o CMakeFiles/src.dir/decoder.cpp.o CMakeFiles/src.dir/encoder.cpp.o CMakeFiles/src.dir/frequency.cpp.o CMakeFiles/src.dir/huffman_tree.cpp.o CMakeFiles/src.dir/print_as_ascii.cpp.o CMakeFiles/src.dir/view_tree.cpp.o
+/usr/bin/ranlib libsrc.a

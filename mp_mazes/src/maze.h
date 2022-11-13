@@ -13,8 +13,12 @@ class SquareMaze{
 =======
 #pragma once
 
-#include <maze.h>
-#include <cs225.h>
+
+#include <vector>
+#include "cs225/PNG.h"
+
+using namespace cs225;
+
 class SquareMaze {
 >>>>>>> ab56bd0 (something is wrong)
     public:
@@ -22,10 +26,14 @@ class SquareMaze {
         bool canTravel(int x, int y, int dir) const;
         PNG* drawMaze() const;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 3faf106 (pulling lab_dit)
         PNG* drawMazeWithSolution();
         void makeMaze(int width, int height);
         void setWall(int x, int y, int dir, bool exists);
         std::vector<int> solveMaze();
+<<<<<<< HEAD
         PNG* drawSolnLineSeg(PNG* maze, int *x, int *y, int dir);
 
         int width_;
@@ -37,4 +45,9 @@ class SquareMaze {
 =======
     private:
 >>>>>>> ab56bd0 (something is wrong)
+=======
+    private:
+        std::vector<int> _sol;
+        PNG* _maze;
+>>>>>>> 3faf106 (pulling lab_dit)
 };

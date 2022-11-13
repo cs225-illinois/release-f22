@@ -1,0 +1,1 @@
+/usr/bin/clang++  -pedantic -Wall -Werror -Wfatal-errors -Wextra -Wno-unused-parameter -Wno-unused-variable -Wno-unused-function -g -D_GLIBCXX_DEBUG -O0 -gdwarf-4 CMakeFiles/test.dir/tests/tests.cpp.o -o test  /usr/lib/libCatch2Main.a src/libsrc.a /usr/lib/libCatch2.a lib/libcs225.a lib/liblodepng.a 

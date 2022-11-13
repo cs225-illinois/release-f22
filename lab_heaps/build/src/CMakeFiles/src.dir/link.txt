@@ -1,0 +1,2 @@
+/usr/bin/ar qc libsrc.a CMakeFiles/src.dir/coloredout.cpp.o CMakeFiles/src.dir/printheap.cpp.o
+/usr/bin/ranlib libsrc.a

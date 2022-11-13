@@ -22,7 +22,7 @@ class DisjointSets {
 class DisjointSets {
     public:
 
-        void addelements(int num);
+        void addelements(int num);   
 
         int find(int elem);
 
@@ -31,7 +31,7 @@ class DisjointSets {
         int size(int elem);
 
     private:
-    
+
         std::vector<int> _elems;
 };
 
